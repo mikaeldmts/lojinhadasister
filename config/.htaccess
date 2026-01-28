@@ -1,0 +1,13 @@
+# Bloquear acesso direto a arquivos PHP nesta pasta
+<FilesMatch "\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Permitir apenas database.php ser incluído
+<Files "database.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+Options -Indexes

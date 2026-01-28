@@ -1,0 +1,15 @@
+# Pasta de uploads - KRStore
+# Bloquear execução de scripts PHP
+
+<FilesMatch "\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Permitir apenas imagens
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+Options -Indexes
