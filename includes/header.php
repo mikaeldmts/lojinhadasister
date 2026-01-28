@@ -1,6 +1,6 @@
 <?php
 /**
- * Header Component - KRStore
+ * Header Component - Lojinha da Irmã
  */
 ?>
 <!DOCTYPE html>
@@ -8,21 +8,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KRStore Moda Masculina - A melhor loja de roupas masculinas. Camisetas, camisas, calças e bermudas com estilo.">
-    <meta name="keywords" content="moda masculina, roupas masculinas, camisetas, camisas, calças, bermudas, streetwear">
-    <meta name="author" content="KRStore">
+    <meta name="description" content="Lojinha da Irmã - Loja de variedades com produtos exclusivos. Roupas, acessórios, decoração e muito mais!">
+    <meta name="keywords" content="loja de variedades, roupas femininas, roupas masculinas, acessórios, decoração, presentes">
+    <meta name="author" content="Lojinha da Irmã">
     
     <!-- Open Graph -->
     <meta property="og:title" content="<?php echo SITE_NAME; ?>">
-    <meta property="og:description" content="A melhor loja de moda masculina do Brasil">
-    <meta property="og:image" content="https://i.ibb.co/whsVT0pp/unnamed-1.jpg">
+    <meta property="og:description" content="Loja de variedades com produtos exclusivos">
+    <meta property="og:image" content="https://i.ibb.co/N2HD9wg5/Whats-App-Image-2026-01-28-at-16-03-10.jpg">
     <meta property="og:url" content="<?php echo SITE_URL; ?>">
     <meta property="og:type" content="website">
     
     <title><?php echo isset($pageTitle) ? $pageTitle . ' - ' . SITE_NAME : SITE_NAME; ?></title>
     
     <!-- Favicon -->
-    <link rel="icon" href="https://i.ibb.co/whsVT0pp/unnamed-1.jpg" type="image/jpeg">
+    <link rel="icon" href="https://i.ibb.co/N2HD9wg5/Whats-App-Image-2026-01-28-at-16-03-10.jpg" type="image/jpeg">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,17 +38,17 @@
         <div class="header-container">
             <!-- Logo -->
             <a href="catalog.php" class="logo">
-                <img src="https://i.ibb.co/whsVT0pp/unnamed-1.jpg" alt="KRStore Logo">
-                <span class="logo-text">KR<span>Store</span></span>
+                <img src="https://i.ibb.co/N2HD9wg5/Whats-App-Image-2026-01-28-at-16-03-10.jpg" alt="Lojinha da Irmã Logo">
+                <span class="logo-text">Lojinha da <span>Irmã</span></span>
             </a>
             
             <!-- Navigation -->
             <nav class="nav-menu">
                 <a href="catalog.php" class="nav-link active">Ínicio</a>
-                <a href="catalog.php#camisetas" class="nav-link">Camisetas</a>
-                <a href="catalog.php#camisas" class="nav-link">Camisas</a>
-                <a href="catalog.php#calcas" class="nav-link">Calças</a>
-                <a href="catalog.php#bermudas" class="nav-link">Bermudas</a>
+                <a href="catalog.php#roupas" class="nav-link">Roupas</a>
+                <a href="catalog.php#acessorios" class="nav-link">Acessórios</a>
+                <a href="catalog.php#calcados" class="nav-link">Calçados</a>
+                <a href="catalog.php#decoracao" class="nav-link">Decoração</a>
             </nav>
             
             <!-- Header Actions -->

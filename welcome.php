@@ -1,6 +1,6 @@
 <?php
 /**
- * KRStore Moda Masculina - Página de Boas-Vindas
+ * Lojinha da Irmã - Página de Boas-Vindas
  */
 
 // Carregar configurações
@@ -25,13 +25,13 @@ session_start();
         }
 
         :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: #111111;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --accent: #00ff88;
-            --accent-glow: rgba(0, 255, 136, 0.3);
-            --border: #222222;
+            --bg-dark: #fff5f8;
+            --bg-card: #ffffff;
+            --text-primary: #2d2d2d;
+            --text-secondary: #666666;
+            --accent: #ff69b4;
+            --accent-glow: rgba(255, 105, 180, 0.3);
+            --border: #ffe4ec;
         }
 
         body {
@@ -72,14 +72,14 @@ session_start();
         }
 
         .bg-gradient:nth-child(2) {
-            background: #00ccff;
+            background: #ff1493;
             bottom: -200px;
             right: -200px;
             animation-delay: 5s;
         }
 
         .bg-gradient:nth-child(3) {
-            background: #ff00ff;
+            background: #ffc0cb;
             top: 50%;
             left: 50%;
             animation-delay: 10s;
@@ -357,19 +357,19 @@ session_start();
     <div class="welcome-container">
         <!-- Logo -->
         <div class="logo">
-            <h1>KRSTORE</h1>
-            <div class="logo-subtitle">Moda Masculina</div>
+            <h1>LOJINHA DA IRMÃ</h1>
+            <div class="logo-subtitle">Variedades</div>
         </div>
 
         <!-- Welcome Content -->
         <div class="welcome-content">
             <h2 class="welcome-title">
-                Bem-vindo!
+                Bem-vinda! 💖
             </h2>
             <p class="welcome-description">
-                Descubra uma seleção exclusiva de peças que combinam estilo, 
-                conforto e qualidade. Do casual ao elegante, encontre o look 
-                perfeito para cada momento da sua vida.
+                Descubra nossa coleção exclusiva de produtos selecionados com carinho.
+                Roupas, acessórios, decoração e muito mais para você, 
+                sua família e sua casa. Tudo em um só lugar!
             </p>
 
             <!-- CTA Button -->
@@ -382,26 +382,26 @@ session_start();
         <!-- Features -->
         <div class="features">
             <div class="feature">
-                <div class="feature-icon">🔥</div>
-                <h3 class="feature-title">Produtos Exclusivos</h3>
+                <div class="feature-icon">�</div>
+                <h3 class="feature-title">Variedades</h3>
                 <p class="feature-description">
-                    Peças selecionadas com qualidade premium
+                    Roupas, acessórios, decoração e utilidades
                 </p>
             </div>
 
             <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <h3 class="feature-title">Atendimento Rápido</h3>
+                <div class="feature-icon">✨</div>
+                <h3 class="feature-title">Exclusividade</h3>
                 <p class="feature-description">
-                    Resposta imediata via WhatsApp
+                    Produtos selecionados especialmente para você
                 </p>
             </div>
 
             <div class="feature">
-                <div class="feature-icon">💎</div>
-                <h3 class="feature-title">Melhor Custo-Benefício</h3>
+                <div class="feature-icon">💖</div>
+                <h3 class="feature-title">Atendimento Personalizado</h3>
                 <p class="feature-description">
-                    Estilo e qualidade por preços justos
+                    Carinho e atenção em cada atendimento
                 </p>
             </div>
         </div>

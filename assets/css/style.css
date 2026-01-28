@@ -1,6 +1,6 @@
 /**
- * KRStore - Estilos Principais
- * Tema Escuro Moderno
+ * Lojinha da Irmã - Estilos Principais
+ * Tema Claro Feminino
  */
 
 /* ==========================================
@@ -8,38 +8,38 @@
    ========================================== */
 :root {
     /* Cores Principais */
-    --bg-primary: #0a0a0a;
-    --bg-secondary: #111111;
-    --bg-tertiary: #1a1a1a;
-    --bg-card: #151515;
-    --bg-hover: #1f1f1f;
+    --bg-primary: #fff5f8;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #ffe4ec;
+    --bg-card: #ffffff;
+    --bg-hover: #fff0f5;
     
     /* Cores de Texto */
-    --text-primary: #ffffff;
-    --text-secondary: #a0a0a0;
-    --text-muted: #666666;
+    --text-primary: #2d2d2d;
+    --text-secondary: #666666;
+    --text-muted: #999999;
     
-    /* Cores de Destaque - Verde Neon (mesmas da página de boas-vindas) */
-    --accent-primary: #00ff88;
-    --accent-secondary: #00ccff;
-    --accent-gradient: linear-gradient(135deg, #00ff88 0%, #00ccff 100%);
-    --accent-glow: rgba(0, 255, 136, 0.3);
+    /* Cores de Destaque - Rosa */
+    --accent-primary: #ff69b4;
+    --accent-secondary: #ff1493;
+    --accent-gradient: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    --accent-glow: rgba(255, 105, 180, 0.3);
     
     /* Cores de Status */
-    --success: #00ff88;
+    --success: #4caf50;
     --error: #e74c3c;
-    --warning: #f39c12;
-    --info: #00ccff;
+    --warning: #ff9800;
+    --info: #ff69b4;
     
     /* Bordas */
-    --border-color: #222222;
-    --border-light: #333333;
+    --border-color: #ffe4ec;
+    --border-light: #ffd4e5;
     
     /* Sombras */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.2);
+    --shadow-sm: 0 2px 4px rgba(255, 105, 180, 0.1);
+    --shadow-md: 0 4px 12px rgba(255, 105, 180, 0.15);
+    --shadow-lg: 0 8px 24px rgba(255, 105, 180, 0.2);
+    --shadow-glow: 0 0 20px rgba(255, 105, 180, 0.3);
     
     /* Transições */
     --transition-fast: 0.2s ease;
@@ -94,7 +94,7 @@ body::before {
     right: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at center, rgba(0, 255, 136, 0.03) 0%, transparent 50%);
+    background: radial-gradient(circle at center, rgba(255, 105, 180, 0.05) 0%, transparent 50%);
     animation: bgPulse 15s ease-in-out infinite;
     pointer-events: none;
     z-index: 0;
@@ -201,15 +201,15 @@ ul, ol {
 
 .btn-primary {
     background: var(--accent-gradient);
-    color: #000;
+    color: #ffffff;
     font-weight: 700;
-    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(0, 255, 136, 0.4);
-    color: #000;
+    box-shadow: 0 6px 25px rgba(255, 105, 180, 0.5);
+    color: #ffffff;
 }
 
 .btn-secondary {

@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             }
         }
         
-        // Criar/Editar Estilo
-        if ($action === 'save_estilo') {
+        // Criar/Editar Subtipo
+        if ($action === 'save_subtipo') {
             $data = [
                 'nome' => trim($_POST['nome'] ?? ''),
                 'slug' => $categoriaModel->generateSlug($_POST['nome'] ?? ''),
@@ -62,17 +62,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             ];
             
             if (empty($data['nome'])) {
-                $errors[] = 'O nome do estilo é obrigatório.';
+                $errors[] = 'O nome do subtipo é obrigatório.';
             } else {
                 $id = (int)($_POST['id'] ?? 0);
                 if ($id > 0) {
-                    $categoriaModel->updateEstilo($id, $data);
-                    Auth::logAction('categoria_estilo_update', "Estilo atualizado: {$data['nome']}");
-                    redirect('categorias.php', 'Estilo atualizado com sucesso!', 'success');
+                    $categoriaModel->updateSubtipo($id, $data);
+                    Auth::logAction('categoria_subtipo_update', "Subtipo atualizado: {$data['nome']}");
+                    redirect('categorias.php', 'Subtipo atualizado com sucesso!', 'success');
                 } else {
-                    $categoriaModel->createEstilo($data);
-                    Auth::logAction('categoria_estilo_create', "Estilo criado: {$data['nome']}");
-                    redirect('categorias.php', 'Estilo criado com sucesso!', 'success');
+                    $categoriaModel->createSubtipo($data);
+                    Auth::logAction('categoria_subtipo_create', "Subtipo criado: {$data['nome']}");
+                    redirect('categorias.php', 'Subtipo criado com sucesso!', 'success');
                 }
             }
         }
@@ -93,14 +93,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             }
         }
         
-        // Deletar Estilo
-        if ($action === 'delete_estilo') {
+        // Deletar Subtipo
+        if ($action === 'delete_subtipo') {
             $id = (int)($_POST['id'] ?? 0);
-            $estilo = $categoriaModel->getEstiloById($id);
-            if ($estilo) {
-                $categoriaModel->deleteEstilo($id);
-                Auth::logAction('categoria_estilo_delete', "Estilo excluído: {$estilo['nome']}");
-                redirect('categorias.php', 'Estilo excluído com sucesso!', 'success');
+            $subtipo = $categoriaModel->getSubtipoById($id);
+            if ($subtipo) {
+                $categoriaModel->deleteSubtipo($id);
+                Auth::logAction('categoria_subtipo_delete', "Subtipo excluído: {$subtipo['nome']}");
+                redirect('categorias.php', 'Subtipo excluído com sucesso!', 'success');
             }
         }
     }
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
 // Buscar categorias
 $categoriasTipo = $categoriaModel->getAllTipos(false);
-$categoriasEstilo = $categoriaModel->getAllEstilos(false);
+$categoriasSubtipo = $categoriaModel->getAllSubtipos(false);
 
 $pageTitle = 'Categorias';
 
@@ -179,11 +179,11 @@ include __DIR__ . '/includes/header.php';
             </table>
         </div>
         
-        <!-- Estilos -->
+        <!-- Subtipos -->
         <div class="admin-card">
             <div class="card-header">
-                <h3 class="card-title">🎨 Estilos</h3>
-                <button class="btn-admin btn-admin-sm btn-admin-primary" onclick="openEstiloModal()">+ Novo</button>
+                <h3 class="card-title">🏷️ Subtipos</h3>
+                <button class="btn-admin btn-admin-sm btn-admin-primary" onclick="openSubtipoModal()">+ Novo</button>
             </div>
             
             <table class="admin-table">
@@ -196,17 +196,17 @@ include __DIR__ . '/includes/header.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($categoriasEstilo as $estilo): ?>
+                    <?php foreach ($categoriasSubtipo as $subtipo): ?>
                     <tr>
                         <td>
-                            <strong><?php echo htmlspecialchars($estilo['nome']); ?></strong>
-                            <br><small style="color: var(--text-muted);"><?php echo $estilo['slug']; ?></small>
+                            <strong><?php echo htmlspecialchars($subtipo['nome']); ?></strong>
+                            <br><small style="color: var(--text-muted);"><?php echo $subtipo['slug']; ?></small>
                         </td>
                         <td>
-                            <span style="display: inline-block; width: 24px; height: 24px; background: <?php echo $estilo['cor']; ?>; border-radius: 4px; border: 1px solid var(--admin-border);"></span>
+                            <span style="display: inline-block; width: 24px; height: 24px; background: <?php echo $subtipo['cor']; ?>; border-radius: 4px; border: 1px solid var(--admin-border);"></span>
                         </td>
                         <td>
-                            <?php if ($estilo['ativo']): ?>
+                            <?php if ($subtipo['ativo']): ?>
                             <span class="status-badge active">Ativo</span>
                             <?php else: ?>
                             <span class="status-badge inactive">Inativo</span>
@@ -214,10 +214,10 @@ include __DIR__ . '/includes/header.php';
                         </td>
                         <td>
                             <div class="action-btns">
-                                <button class="action-btn" onclick='editEstilo(<?php echo json_encode($estilo); ?>)' title="Editar">✏️</button>
-                                <form method="POST" style="display: inline;" onsubmit="return confirm('Excluir este estilo?');">
-                                    <input type="hidden" name="action" value="delete_estilo">
-                                    <input type="hidden" name="id" value="<?php echo $estilo['id']; ?>">
+                                <button class="action-btn" onclick='editSubtipo(<?php echo json_encode($subtipo); ?>)' title="Editar">✏️</button>
+                                <form method="POST" style="display: inline;" onsubmit="return confirm('Excluir este subtipo?');">
+                                    <input type="hidden" name="action" value="delete_subtipo">
+                                    <input type="hidden" name="id" value="<?php echo $subtipo['id']; ?>">
                                     <input type="hidden" name="csrf_token" value="<?php echo Auth::getCSRFToken(); ?>">
                                     <button type="submit" class="action-btn delete" title="Excluir">🗑️</button>
                                 </form>
@@ -277,50 +277,50 @@ include __DIR__ . '/includes/header.php';
     </div>
 </div>
 
-<!-- Modal Estilo -->
-<div class="admin-modal" id="estiloModal">
-    <div class="modal-backdrop" onclick="closeEstiloModal()"></div>
+<!-- Modal Subtipo -->
+<div class="admin-modal" id="subtipoModal">
+    <div class="modal-backdrop" onclick="closeSubtipoModal()"></div>
     <div class="modal-container">
         <div class="modal-header">
-            <h3 class="modal-title" id="estiloModalTitle">Novo Estilo</h3>
-            <button class="modal-close" onclick="closeEstiloModal()">×</button>
+            <h3 class="modal-title" id="subtipoModalTitle">Novo Subtipo</h3>
+            <button class="modal-close" onclick="closeSubtipoModal()">×</button>
         </div>
         <form method="POST">
             <div class="modal-body">
-                <input type="hidden" name="action" value="save_estilo">
-                <input type="hidden" name="id" id="estiloId" value="">
+                <input type="hidden" name="action" value="save_subtipo">
+                <input type="hidden" name="id" id="subtipoId" value="">
                 <input type="hidden" name="csrf_token" value="<?php echo Auth::getCSRFToken(); ?>">
                 
                 <div class="form-group">
                     <label class="form-label required">Nome</label>
-                    <input type="text" name="nome" id="estiloNome" class="form-input" required>
+                    <input type="text" name="nome" id="subtipoNome" class="form-input" required>
                 </div>
                 
                 <div class="form-group">
                     <label class="form-label">Descrição</label>
-                    <textarea name="descricao" id="estiloDescricao" class="form-textarea" rows="3"></textarea>
+                    <textarea name="descricao" id="subtipoDescricao" class="form-textarea" rows="3"></textarea>
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label">Cor</label>
-                        <input type="color" name="cor" id="estiloCor" class="form-input" value="#ffffff" style="height: 42px; padding: 4px;">
+                        <input type="color" name="cor" id="subtipoCor" class="form-input" value="#ffffff" style="height: 42px; padding: 4px;">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Ordem</label>
-                        <input type="number" name="ordem" id="estiloOrdem" class="form-input" value="0" min="0">
+                        <input type="number" name="ordem" id="subtipoOrdem" class="form-input" value="0" min="0">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="form-check">
-                        <input type="checkbox" name="ativo" id="estiloAtivo" value="1" checked>
+                        <input type="checkbox" name="ativo" id="subtipoAtivo" value="1" checked>
                         <span>Ativo</span>
                     </label>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn-admin btn-admin-secondary" onclick="closeEstiloModal()">Cancelar</button>
+                <button type="button" class="btn-admin btn-admin-secondary" onclick="closeSubtipoModal()">Cancelar</button>
                 <button type="submit" class="btn-admin btn-admin-primary">Salvar</button>
             </div>
         </form>
@@ -353,38 +353,38 @@ function closeTipoModal() {
     document.getElementById('tipoModal').classList.remove('active');
 }
 
-// Modal Estilo
-function openEstiloModal() {
-    document.getElementById('estiloModalTitle').textContent = 'Novo Estilo';
-    document.getElementById('estiloId').value = '';
-    document.getElementById('estiloNome').value = '';
-    document.getElementById('estiloDescricao').value = '';
-    document.getElementById('estiloCor').value = '#ffffff';
-    document.getElementById('estiloOrdem').value = '0';
-    document.getElementById('estiloAtivo').checked = true;
-    document.getElementById('estiloModal').classList.add('active');
+// Modal Subtipo
+function openSubtipoModal() {
+    document.getElementById('subtipoModalTitle').textContent = 'Novo Subtipo';
+    document.getElementById('subtipoId').value = '';
+    document.getElementById('subtipoNome').value = '';
+    document.getElementById('subtipoDescricao').value = '';
+    document.getElementById('subtipoCor').value = '#ffffff';
+    document.getElementById('subtipoOrdem').value = '0';
+    document.getElementById('subtipoAtivo').checked = true;
+    document.getElementById('subtipoModal').classList.add('active');
 }
 
-function editEstilo(estilo) {
-    document.getElementById('estiloModalTitle').textContent = 'Editar Estilo';
-    document.getElementById('estiloId').value = estilo.id;
-    document.getElementById('estiloNome').value = estilo.nome;
-    document.getElementById('estiloDescricao').value = estilo.descricao || '';
-    document.getElementById('estiloCor').value = estilo.cor || '#ffffff';
-    document.getElementById('estiloOrdem').value = estilo.ordem;
-    document.getElementById('estiloAtivo').checked = estilo.ativo == 1;
-    document.getElementById('estiloModal').classList.add('active');
+function editSubtipo(subtipo) {
+    document.getElementById('subtipoModalTitle').textContent = 'Editar Subtipo';
+    document.getElementById('subtipoId').value = subtipo.id;
+    document.getElementById('subtipoNome').value = subtipo.nome;
+    document.getElementById('subtipoDescricao').value = subtipo.descricao || '';
+    document.getElementById('subtipoCor').value = subtipo.cor || '#ffffff';
+    document.getElementById('subtipoOrdem').value = subtipo.ordem;
+    document.getElementById('subtipoAtivo').checked = subtipo.ativo == 1;
+    document.getElementById('subtipoModal').classList.add('active');
 }
 
-function closeEstiloModal() {
-    document.getElementById('estiloModal').classList.remove('active');
+function closeSubtipoModal() {
+    document.getElementById('subtipoModal').classList.remove('active');
 }
 
 // Fechar com ESC
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeTipoModal();
-        closeEstiloModal();
+        closeSubtipoModal();
     }
 });
 </script>

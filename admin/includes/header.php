@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin Header Include - KRStore
+ * Admin Header Include - Lojinha da Irmã
  */
 ?>
 <!DOCTYPE html>
@@ -8,8 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title><?php echo isset($pageTitle) ? $pageTitle . ' - ' : ''; ?>Admin KRStore</title>
-    <link rel="icon" href="https://i.ibb.co/whsVT0pp/unnamed-1.jpg" type="image/jpeg">
+    <title><?php echo isset($pageTitle) ? $pageTitle . ' - ' : ''; ?>Admin Lojinha da Irmã</title>
+    <link rel="icon" href="https://i.ibb.co/N2HD9wg5/Whats-App-Image-2026-01-28-at-16-03-10.jpg" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -32,8 +32,8 @@
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <a href="index.php" class="sidebar-logo">
-                    <img src="https://i.ibb.co/whsVT0pp/unnamed-1.jpg" alt="KRStore">
-                    <span>KR<b>Store</b></span>
+                    <img src="https://i.ibb.co/N2HD9wg5/Whats-App-Image-2026-01-28-at-16-03-10.jpg" alt="Lojinha da Irmã">
+                    <span>Lojinha da <b>Irmã</b></span>
                 </a>
             </div>
             

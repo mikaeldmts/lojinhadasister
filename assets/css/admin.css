@@ -1,5 +1,5 @@
 /**
- * KRStore - Admin Panel Styles
+ * Lojinha da Irmã - Admin Panel Styles
  */
 
 /* ==========================================
@@ -10,12 +10,12 @@
     --admin-sidebar: #151515;
     --admin-card: #1a1a1a;
     --admin-border: #2a2a2a;
-    --admin-accent: #f5a623;
-    --admin-accent-hover: #e8940f;
-    --admin-success: #27ae60;
+    --admin-accent: #ff69b4;
+    --admin-accent-hover: #ff1493;
+    --admin-success: #4caf50;
     --admin-error: #e74c3c;
-    --admin-warning: #f39c12;
-    --admin-info: #3498db;
+    --admin-warning: #ff9800;
+    --admin-info: #ff69b4;
 }
 
 /* ==========================================

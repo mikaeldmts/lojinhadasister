@@ -1,6 +1,6 @@
 <?php
 /**
- * Classe de Categorias - KRStore
+ * Classe de Categorias - Lojinha da Irmã
  * Compatível com PHP sem mysqlnd (não usa get_result nem fetch_all)
  */
 
@@ -118,14 +118,14 @@ class Categoria {
     }
     
     // ==========================================
-    // CATEGORIAS DE ESTILO
+    // CATEGORIAS DE SUBTIPO
     // ==========================================
     
     /**
-     * Buscar todas as categorias de estilo
+     * Buscar todas as categorias de subtipo
      */
-    public function getAllEstilos($apenasAtivos = true) {
-        $sql = "SELECT * FROM categorias_estilo";
+    public function getAllSubtipos($apenasAtivos = true) {
+        $sql = "SELECT * FROM categorias_subtipo";
         if ($apenasAtivos) {
             $sql .= " WHERE ativo = 1";
         }
@@ -136,10 +136,10 @@ class Categoria {
     }
     
     /**
-     * Buscar categoria de estilo por ID
+     * Buscar categoria de subtipo por ID
      */
-    public function getEstiloById($id) {
-        $sql = "SELECT * FROM categorias_estilo WHERE id = " . (int)$id;
+    public function getSubtipoById($id) {
+        $sql = "SELECT * FROM categorias_subtipo WHERE id = " . (int)$id;
         $result = $this->db->query($sql);
         if ($result && $result->num_rows > 0) {
             return $result->fetch_assoc();
@@ -148,11 +148,11 @@ class Categoria {
     }
     
     /**
-     * Buscar categoria de estilo por slug
+     * Buscar categoria de subtipo por slug
      */
-    public function getEstiloBySlug($slug) {
+    public function getSubtipoBySlug($slug) {
         $slug = $this->db->real_escape_string($slug);
-        $sql = "SELECT * FROM categorias_estilo WHERE slug = '$slug'";
+        $sql = "SELECT * FROM categorias_subtipo WHERE slug = '$slug'";
         $result = $this->db->query($sql);
         if ($result && $result->num_rows > 0) {
             return $result->fetch_assoc();
@@ -161,9 +161,9 @@ class Categoria {
     }
     
     /**
-     * Criar categoria de estilo
+     * Criar categoria de subtipo
      */
-    public function createEstilo($data) {
+    public function createSubtipo($data) {
         $nome = $this->db->real_escape_string($data['nome']);
         $slug = $this->db->real_escape_string($data['slug']);
         $descricao = $this->db->real_escape_string($data['descricao'] ?? '');
@@ -171,7 +171,7 @@ class Categoria {
         $ordem = (int)($data['ordem'] ?? 0);
         $ativo = (int)($data['ativo'] ?? 1);
         
-        $sql = "INSERT INTO categorias_estilo (nome, slug, descricao, cor, ordem, ativo) 
+        $sql = "INSERT INTO categorias_subtipo (nome, slug, descricao, cor, ordem, ativo) 
                 VALUES ('$nome', '$slug', '$descricao', '$cor', $ordem, $ativo)";
         
         if ($this->db->query($sql)) {
@@ -181,9 +181,9 @@ class Categoria {
     }
     
     /**
-     * Atualizar categoria de estilo
+     * Atualizar categoria de subtipo
      */
-    public function updateEstilo($id, $data) {
+    public function updateSubtipo($id, $data) {
         $nome = $this->db->real_escape_string($data['nome']);
         $slug = $this->db->real_escape_string($data['slug']);
         $descricao = $this->db->real_escape_string($data['descricao'] ?? '');
@@ -191,7 +191,7 @@ class Categoria {
         $ordem = (int)($data['ordem'] ?? 0);
         $ativo = (int)($data['ativo'] ?? 1);
         
-        $sql = "UPDATE categorias_estilo SET 
+        $sql = "UPDATE categorias_subtipo SET 
                 nome = '$nome',
                 slug = '$slug',
                 descricao = '$descricao',
@@ -204,10 +204,10 @@ class Categoria {
     }
     
     /**
-     * Deletar categoria de estilo
+     * Deletar categoria de subtipo
      */
-    public function deleteEstilo($id) {
-        $sql = "DELETE FROM categorias_estilo WHERE id = " . (int)$id;
+    public function deleteSubtipo($id) {
+        $sql = "DELETE FROM categorias_subtipo WHERE id = " . (int)$id;
         return $this->db->query($sql);
     }
     
@@ -225,10 +225,10 @@ class Categoria {
     }
     
     /**
-     * Contar produtos por categoria de estilo
+     * Contar produtos por categoria de subtipo
      */
-    public function countProdutosByEstilo($estiloId) {
-        $sql = "SELECT COUNT(*) as total FROM produtos WHERE categoria_estilo_id = " . (int)$estiloId . " AND ativo = 1";
+    public function countProdutosBySubtipo($subtipoId) {
+        $sql = "SELECT COUNT(*) as total FROM produtos WHERE categoria_subtipo_id = " . (int)$subtipoId . " AND ativo = 1";
         $result = $this->db->query($sql);
         if ($result && $result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -247,5 +247,40 @@ class Categoria {
         $slug = trim($slug, '-');
         $slug = preg_replace('~-+~', '-', $slug);
         return strtolower($slug);
+    }
+    
+    // ==========================================
+    // ALIASES PARA COMPATIBILIDADE
+    // ==========================================
+    
+    /**
+     * Aliases para manter compatibilidade com código antigo
+     */
+    public function getAllEstilos($apenasAtivos = true) {
+        return $this->getAllSubtipos($apenasAtivos);
+    }
+    
+    public function getEstiloById($id) {
+        return $this->getSubtipoById($id);
+    }
+    
+    public function getEstiloBySlug($slug) {
+        return $this->getSubtipoBySlug($slug);
+    }
+    
+    public function createEstilo($data) {
+        return $this->createSubtipo($data);
+    }
+    
+    public function updateEstilo($id, $data) {
+        return $this->updateSubtipo($id, $data);
+    }
+    
+    public function deleteEstilo($id) {
+        return $this->deleteSubtipo($id);
+    }
+    
+    public function countProdutosByEstilo($estiloId) {
+        return $this->countProdutosBySubtipo($estiloId);
     }
 }

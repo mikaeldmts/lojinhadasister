@@ -1,6 +1,6 @@
 <?php
 /**
- * KRStore Moda Masculina - Entrada Principal
+ * Lojinha da Irmã - Entrada Principal
  * Redireciona para página de boas-vindas na primeira visita
  */
 

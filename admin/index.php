@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin Dashboard - KRStore
+ * Admin Dashboard - Lojinha da Irmã
  */
 
 session_start();
@@ -21,7 +21,7 @@ $categoriaModel = new Categoria();
 $totalProdutos = $produtoModel->count();
 $produtosAtivos = $produtoModel->count(true);
 $totalTipos = count($categoriaModel->getAllTipos(false));
-$totalEstilos = count($categoriaModel->getAllEstilos(false));
+$totalSubtipos = count($categoriaModel->getAllSubtipos(false));
 
 // Últimos produtos (incluindo inativos)
 $ultimosProdutos = $produtoModel->getAllAdmin(10);
@@ -69,10 +69,10 @@ include __DIR__ . '/includes/header.php';
         
         <div class="stat-card">
             <div class="stat-header">
-                <div class="stat-icon orders">🎨</div>
+                <div class="stat-icon orders">�️</div>
             </div>
-            <div class="stat-value"><?php echo $totalEstilos; ?></div>
-            <div class="stat-label">Estilos</div>
+            <div class="stat-value"><?php echo $totalSubtipos; ?></div>
+            <div class="stat-label">Subtipos</div>
         </div>
     </div>
     

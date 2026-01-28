@@ -92,10 +92,10 @@
                 <!-- Brand -->
                 <div class="footer-brand">
                     <a href="catalog.php" class="logo">
-                        <img src="https://i.ibb.co/whsVT0pp/unnamed-1.jpg" alt="KRStore Logo">
-                        <span class="logo-text">KR<span>Store</span></span>
+                        <img src="https://i.ibb.co/N2HD9wg5/Whats-App-Image-2026-01-28-at-16-03-10.jpg" alt="Lojinha da Irmã Logo">
+                        <span class="logo-text">Lojinha da <span>Irmã</span></span>
                     </a>
-                    <p>Moda masculina com estilo e qualidade. Encontre peças que combinam com você.</p>
+                    <p>Loja de variedades com produtos exclusivos. Encontre roupas, acessórios, decoração e muito mais!</p>
                     <div class="social-links">
                         <a href="https://instagram.com/<?php echo INSTAGRAM_USER; ?>" target="_blank" class="social-link" title="Instagram">
                             📷
@@ -110,21 +110,21 @@
                 <div class="footer-section">
                     <h4>Categorias</h4>
                     <ul>
-                        <li><a href="catalog.php#camisetas">Camisetas</a></li>
-                        <li><a href="catalog.php#camisas">Camisas</a></li>
-                        <li><a href="catalog.php#calcas">Calças</a></li>
-                        <li><a href="catalog.php#bermudas">Bermudas</a></li>
+                        <li><a href="catalog.php#roupas">Roupas</a></li>
+                        <li><a href="catalog.php#acessorios">Acessórios</a></li>
+                        <li><a href="catalog.php#calcados">Calçados</a></li>
+                        <li><a href="catalog.php#decoracao">Decoração</a></li>
                     </ul>
                 </div>
                 
                 <!-- Styles -->
                 <div class="footer-section">
-                    <h4>Estilos</h4>
+                    <h4>Subtipos</h4>
                     <ul>
-                        <li><a href="catalog.php?estilo=casual">Casual</a></li>
-                        <li><a href="catalog.php?estilo=social">Social</a></li>
-                        <li><a href="catalog.php?estilo=urbano">Urbano</a></li>
-                        <li><a href="catalog.php?estilo=esportivo">Esportivo</a></li>
+                        <li><a href="catalog.php?estilo=feminino">Feminino</a></li>
+                        <li><a href="catalog.php?estilo=masculino">Masculino</a></li>
+                        <li><a href="catalog.php?estilo=infantil">Infantil</a></li>
+                        <li><a href="catalog.php?estilo=casa">Casa</a></li>
                     </ul>
                 </div>
                 
@@ -134,7 +134,7 @@
                     <ul>
                         <li><a href="https://wa.me/<?php echo WHATSAPP_NUMBER; ?>" target="_blank">WhatsApp</a></li>
                         <li><a href="https://instagram.com/<?php echo INSTAGRAM_USER; ?>" target="_blank">Instagram</a></li>
-                        <li><a href="mailto:contato@vendaskrstore.shop">E-mail</a></li>
+                        <li><a href="mailto:contato@lojinhadairma.shop">E-mail</a></li>
                     </ul>
                 </div>
             </div>

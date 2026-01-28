@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin Login - KRStore
+ * Admin Login - Lojinha da Irmã
  */
 
 session_start();
@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Login - Admin KRStore</title>
-    <link rel="icon" href="https://i.ibb.co/whsVT0pp/unnamed-1.jpg" type="image/jpeg">
+    <title>Login - Admin Lojinha da Irmã</title>
+    <link rel="icon" href="https://i.ibb.co/N2HD9wg5/Whats-App-Image-2026-01-28-at-16-03-10.jpg" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -58,9 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="login-wrapper">
         <div class="login-card">
             <div class="login-header">
-                <img src="https://i.ibb.co/whsVT0pp/unnamed-1.jpg" alt="KRStore Logo" class="login-logo">
+                <img src="https://i.ibb.co/N2HD9wg5/Whats-App-Image-2026-01-28-at-16-03-10.jpg" alt="Lojinha da Irmã Logo" class="login-logo">
                 <h1 class="login-title">Painel Admin</h1>
-                <p class="login-subtitle">KRStore Moda Masculina</p>
+                <p class="login-subtitle">Lojinha da Irmã</p>
             </div>
             
             <?php if ($error): ?>

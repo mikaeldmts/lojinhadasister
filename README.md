@@ -1,6 +1,6 @@
-# KRStore Moda Masculina
+# Lojinha da Irmã
 
-Loja virtual de roupas masculinas desenvolvida em PHP com tema escuro moderno.
+Loja virtual de variedades desenvolvida em PHP com tema claro feminino.
 
 ## 📁 Estrutura do Projeto
 
@@ -70,11 +70,11 @@ DB_NAME=vendaskr_banco
 DB_USER=vendaskr_user
 DB_PASS=SUA_SENHA_AQUI
 
-SITE_NAME=KRStore Moda Masculina
-SITE_URL=https://vendaskrstore.shop
+SITE_NAME=Lojinha da Irmã
+SITE_URL=https://lojinhadairma.shop
 
-WHATSAPP_NUMBER=5585985009840
-INSTAGRAM_USER=krstore2026
+WHATSAPP_NUMBER=5585880556
+INSTAGRAM_USER=lojinhadairmad
 
 ADMIN_USER=admin
 ADMIN_PASS_HASH=047eda68a1d5ed8835f8f80b0be399f476b0f6e05e820b94944b97b6799c6b6c147eb9edacdcad1fcfe7926ee43ab4731b5d3afa916c8f66b3f799ddfd9a0aaf
@@ -96,7 +96,7 @@ chmod 777 -R /path/to/krstore/uploads
 ## 📱 Funcionalidades
 
 ### Loja (Frontend)
-- ✅ Tema escuro moderno e responsivo
+- ✅ Tema claro feminino e responsivo
 - ✅ Catálogo de produtos separado por categorias
 - ✅ Carrossel de produtos por categoria
 - ✅ Cards de produtos com badges de promoção/destaque
@@ -104,7 +104,7 @@ chmod 777 -R /path/to/krstore/uploads
 - ✅ Carrinho de compras (localStorage)
 - ✅ Finalização de compra via WhatsApp
 - ✅ Busca de produtos
-- ✅ Filtro por estilos
+- ✅ Filtro por subtipos
 
 ### Painel Admin (Backend)
 - ✅ Login seguro com SHA-512
@@ -118,19 +118,20 @@ chmod 777 -R /path/to/krstore/uploads
 ## 🎨 Categorias Padrão
 
 ### Tipos de Produto
-- Camisetas
-- Camisas
-- Calças
-- Bermudas
+- Roupas
+- Acessórios
+- Calçados
+- Decoração
+- Utilidades
 
-### Estilos
-- Casual
-- Social
-- Urbano (Streetwear)
-- Esportivo
-- Tradicional
-- Elegante
-- Criativo
+### Subtipos
+- Feminino
+- Masculino
+- Infantil
+- Unissex
+- Casa
+- Presente
+- Promoção
 
 ## 🛡️ Segurança
 
@@ -143,10 +144,10 @@ chmod 777 -R /path/to/krstore/uploads
 
 ## 📞 Contato
 
-- **Instagram:** @krstore2026
-- **WhatsApp:** (85) 98500-9840
-- **Site:** vendaskrstore.shop
+- **Instagram:** @lojinhadairmad
+- **WhatsApp:** (85) 8588-0556
+- **Site:** lojinhadairma.shop
 
 ---
 
-Desenvolvido com ❤️ para KRStore Moda Masculina
+Desenvolvido com ❤️ para Lojinha da Irmã

@@ -1,14 +1,14 @@
 -- =============================================
--- KRStore Moda Masculina - Banco de Dados
+-- Lojinha da Irmã - Banco de Dados
 -- Execute este arquivo no phpMyAdmin
 -- =============================================
 
 -- Criar banco de dados (caso não exista)
-CREATE DATABASE IF NOT EXISTS `vendaskr_banco` 
+CREATE DATABASE IF NOT EXISTS `lojinha1_banco` 
 CHARACTER SET utf8mb4 
 COLLATE utf8mb4_unicode_ci;
 
-USE `vendaskr_banco`;
+USE `lojinha1_banco`;
 
 -- =============================================
 -- Tabela de Categorias de Tipo (Camisetas, Calças, etc)
@@ -27,9 +27,9 @@ CREATE TABLE IF NOT EXISTS `categorias_tipo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =============================================
--- Tabela de Categorias de Estilo (Casual, Social, etc)
+-- Tabela de Categorias de Subtipo
 -- =============================================
-CREATE TABLE IF NOT EXISTS `categorias_estilo` (
+CREATE TABLE IF NOT EXISTS `categorias_subtipo` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(100) NOT NULL,
     `slug` VARCHAR(100) NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
     `preco` DECIMAL(10,2) NOT NULL,
     `preco_promocional` DECIMAL(10,2) DEFAULT NULL,
     `categoria_tipo_id` INT(11) NOT NULL,
-    `categoria_estilo_id` INT(11) DEFAULT NULL,
+    `categoria_subtipo_id` INT(11) DEFAULT NULL,
     `imagem_principal` VARCHAR(255) DEFAULT NULL,
     `imagens_adicionais` TEXT DEFAULT NULL COMMENT 'JSON com URLs das imagens adicionais',
     `tamanhos` VARCHAR(100) DEFAULT 'P,M,G,GG',
@@ -69,15 +69,18 @@ CREATE TABLE IF NOT EXISTS `produtos` (
     PRIMARY KEY (`id`),
     UNIQUE KEY `slug` (`slug`),
     KEY `categoria_tipo_id` (`categoria_tipo_id`),
-    KEY `categoria_estilo_id` (`categoria_estilo_id`),
+    KEY `categoria_subtipo_id` (`categoria_subtipo_id`),
     CONSTRAINT `fk_produto_tipo` FOREIGN KEY (`categoria_tipo_id`) REFERENCES `categorias_tipo` (`id`) ON DELETE CASCADE,
-    CONSTRAINT `fk_produto_estilo` FOREIGN KEY (`categoria_estilo_id`) REFERENCES `categorias_estilo` (`id`) ON DELETE SET NULL
+    CONSTRAINT `fk_produto_subtipo` FOREIGN KEY (`categoria_subtipo_id`) REFERENCES `categorias_subtipo` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Adicionar campos se não existirem (para bancos já criados)
 -- Execute manualmente: 
 -- ALTER TABLE `produtos` ADD COLUMN `variacoes` TEXT DEFAULT NULL AFTER `cores`;
 -- ALTER TABLE `produtos` ADD COLUMN `imagens_adicionais` TEXT DEFAULT NULL AFTER `imagem_principal`;
+-- Para renomear categorias_estilo para categorias_subtipo:
+-- RENAME TABLE `categorias_estilo` TO `categorias_subtipo`;
+-- ALTER TABLE `produtos` CHANGE `categoria_estilo_id` `categoria_subtipo_id` INT(11) DEFAULT NULL;
 
 -- =============================================
 -- Tabela de Imagens dos Produtos
@@ -137,32 +140,33 @@ CREATE TABLE IF NOT EXISTS `admin_logs` (
 -- Inserir Categorias de Tipo Padrão
 -- =============================================
 INSERT INTO `categorias_tipo` (`nome`, `slug`, `descricao`, `ordem`, `ativo`) VALUES
-('Camisetas', 'camisetas', 'Camisetas masculinas de diversos estilos', 1, 1),
-('Camisas', 'camisas', 'Camisas sociais e casuais', 2, 1),
-('Calças', 'calcas', 'Calças jeans, sociais e casuais', 3, 1),
-('Bermudas', 'bermudas', 'Bermudas para todas as ocasiões', 4, 1);
+('Roupas', 'roupas', 'Roupas femininas e masculinas', 1, 1),
+('Acessórios', 'acessorios', 'Acessórios diversos', 2, 1),
+('Calçados', 'calcados', 'Calçados femininos e masculinos', 3, 1),
+('Decoração', 'decoracao', 'Itens de decoração', 4, 1),
+('Utilidades', 'utilidades', 'Produtos úteis para o dia a dia', 5, 1);
 
 -- =============================================
--- Inserir Categorias de Estilo Padrão
+-- Inserir Categorias de Subtipo Padrão
 -- =============================================
-INSERT INTO `categorias_estilo` (`nome`, `slug`, `descricao`, `cor`, `ordem`, `ativo`) VALUES
-('Casual', 'casual', 'Estilo casual para o dia a dia', '#4a90d9', 1, 1),
-('Social', 'social', 'Peças elegantes para ocasiões formais', '#2c3e50', 2, 1),
-('Urbano', 'urbano', 'Streetwear moderno e despojado', '#e74c3c', 3, 1),
-('Esportivo', 'esportivo', 'Roupas confortáveis para atividades físicas', '#27ae60', 4, 1),
-('Tradicional', 'tradicional', 'Clássicos que nunca saem de moda', '#8e44ad', 5, 1),
-('Elegante', 'elegante', 'Sofisticação e refinamento', '#f39c12', 6, 1),
-('Criativo', 'criativo', 'Peças únicas e diferenciadas', '#e91e63', 7, 1);
+INSERT INTO `categorias_subtipo` (`nome`, `slug`, `descricao`, `cor`, `ordem`, `ativo`) VALUES
+('Feminino', 'feminino', 'Produtos femininos', '#ff69b4', 1, 1),
+('Masculino', 'masculino', 'Produtos masculinos', '#4a90d9', 2, 1),
+('Infantil', 'infantil', 'Produtos infantis', '#ffa500', 3, 1),
+('Unissex', 'unissex', 'Produtos para todos', '#9370db', 4, 1),
+('Casa', 'casa', 'Itens para casa', '#20b2aa', 5, 1),
+('Presente', 'presente', 'Ideias de presente', '#ff1493', 6, 1),
+('Promoção', 'promocao', 'Produtos em promoção', '#ff4500', 7, 1);
 
 -- =============================================
 -- Inserir Configurações Padrão
 -- =============================================
 INSERT INTO `configuracoes` (`chave`, `valor`, `tipo`) VALUES
-('site_nome', 'KRStore Moda Masculina', 'text'),
-('site_descricao', 'A melhor loja de moda masculina do Brasil', 'textarea'),
-('whatsapp', '5585985009840', 'text'),
-('instagram', 'krstore2026', 'text'),
-('email', 'contato@vendaskrstore.shop', 'email'),
+('site_nome', 'Lojinha da Irmã', 'text'),
+('site_descricao', 'Loja de variedades com produtos exclusivos', 'textarea'),
+('whatsapp', '5585880556', 'text'),
+('instagram', 'lojinhadairmad', 'text'),
+('email', 'contato@lojinhadairma.shop', 'email'),
 ('endereco', '', 'textarea'),
 ('frete_gratis_minimo', '299.00', 'number'),
 ('desconto_pix', '10', 'number');
@@ -170,7 +174,7 @@ INSERT INTO `configuracoes` (`chave`, `valor`, `tipo`) VALUES
 -- =============================================
 -- Inserir Produtos de Exemplo
 -- =============================================
-INSERT INTO `produtos` (`nome`, `slug`, `descricao`, `preco`, `preco_promocional`, `categoria_tipo_id`, `categoria_estilo_id`, `imagem_principal`, `tamanhos`, `cores`, `estoque`, `destaque`, `ativo`) VALUES
+INSERT INTO `produtos` (`nome`, `slug`, `descricao`, `preco`, `preco_promocional`, `categoria_tipo_id`, `categoria_subtipo_id`, `imagem_principal`, `tamanhos`, `cores`, `estoque`, `destaque`, `ativo`) VALUES
 ('Camiseta Básica Preta', 'camiseta-basica-preta', 'Camiseta básica 100% algodão, confortável e versátil para o dia a dia.', 79.90, 59.90, 1, 1, 'https://via.placeholder.com/400x500/1a1a1a/ffffff?text=Camiseta+Preta', 'P,M,G,GG,XG', 'Preto,Branco,Cinza', 50, 1, 1),
 ('Camiseta Streetwear Urban', 'camiseta-streetwear-urban', 'Camiseta oversized com estampa exclusiva estilo urbano.', 129.90, NULL, 1, 3, 'https://via.placeholder.com/400x500/2c2c2c/ffffff?text=Camiseta+Urban', 'M,G,GG', 'Preto,Grafite', 30, 1, 1),
 ('Camiseta Esportiva Dry-Fit', 'camiseta-esportiva-dry-fit', 'Camiseta tecnológica com secagem rápida para treinos.', 99.90, 79.90, 1, 4, 'https://via.placeholder.com/400x500/27ae60/ffffff?text=Camiseta+Sport', 'P,M,G,GG', 'Verde,Azul,Preto', 40, 0, 1),

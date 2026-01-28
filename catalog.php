@@ -1,6 +1,6 @@
 <?php
 /**
- * KRStore Moda Masculina - Página Principal
+ * Lojinha da Irmã - Página Principal
  */
 
 // Iniciar sessão
@@ -92,10 +92,10 @@ include __DIR__ . '/includes/header.php';
     <div class="container">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Estilo que <span>Define</span> Você</h1>
-                <p>Descubra a coleção exclusiva de moda masculina da KRStore. Peças que combinam conforto, qualidade e tendência para todas as ocasiões.</p>
+                <h1>Descubra seu <span>Estilo</span></h1>
+                <p>Explore nossa coleção exclusiva de produtos selecionados com carinho. Roupas, acessórios, decoração e muito mais para você!</p>
                 <div class="hero-buttons">
-                    <a href="#camisetas" class="btn btn-primary btn-lg">Ver Coleção</a>
+                    <a href="#roupas" class="btn btn-primary btn-lg">Ver Coleção</a>
                     <a href="https://wa.me/<?php echo WHATSAPP_NUMBER; ?>" target="_blank" class="btn btn-outline btn-lg">Fale Conosco</a>
                 </div>
             </div>
